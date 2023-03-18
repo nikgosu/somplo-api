@@ -21,14 +21,14 @@ export class AppService {
   }
 
   async getOne(id): Promise<Creative[]> {
-    return this.creativeModel.findById(id);
+    return this.creativeModel.findOne(id);
   }
 
   async update(creative): Promise<Creative[]> {
-    return this.creativeModel.findByIdAndUpdate(creative._id, creative);
+    return this.creativeModel.findOneAndUpdate(creative._id, creative);
   }
 
   async delete(id): Promise<Creative[]> {
-    return this.creativeModel.findByIdAndDelete(id);
+    return this.creativeModel.findOneAndDelete(id);
   }
 }

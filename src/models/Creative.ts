@@ -1,6 +1,7 @@
 import { Schema, Document } from 'mongoose';
 
 export interface Creative extends Document {
+  readonly name: string;
   readonly animation: string;
   readonly height: number;
   readonly horizontalPos: number;
@@ -11,6 +12,7 @@ export interface Creative extends Document {
 }
 
 export const CreativeSchema = new Schema({
+  name: { type: String, required: true },
   animation: { type: String, required: true },
   height: { type: Number, required: true },
   horizontalPos: { type: Number, required: true },
