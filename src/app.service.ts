@@ -20,8 +20,8 @@ export class AppService {
     return this.creativeModel.find().exec();
   }
 
-  async getOne(id): Promise<Creative[]> {
-    return this.creativeModel.findOne(id);
+  async getOne(id): Promise<Creative> {
+    return this.creativeModel.findById(id);
   }
 
   async update(creative): Promise<Creative[]> {
@@ -29,6 +29,6 @@ export class AppService {
   }
 
   async delete(id): Promise<Creative[]> {
-    return this.creativeModel.findOneAndDelete(id);
+    return this.creativeModel.findByIdAndDelete(id);
   }
 }
