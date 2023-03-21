@@ -11,9 +11,9 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
-  async create(user: Creative): Promise<Creative> {
-    const createdUser = new this.creativeModel(user);
-    return createdUser.save();
+  async create(creative: Creative): Promise<Creative> {
+    const createdCreative = new this.creativeModel(creative);
+    return createdCreative.save();
   }
 
   async getAll(): Promise<Creative[]> {
@@ -28,7 +28,7 @@ export class AppService {
     return this.creativeModel.findOneAndUpdate(creative._id, creative);
   }
 
-  async delete(id): Promise<Creative[]> {
-    return this.creativeModel.findByIdAndDelete(id);
+  async delete(id): Promise<Creative> {
+    return this.creativeModel.findOneAndDelete(id);
   }
 }

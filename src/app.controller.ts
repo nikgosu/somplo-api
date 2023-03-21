@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post, Put, Query, Req} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, Query} from '@nestjs/common';
 import { AppService } from './app.service';
 import {Creative} from "./models/Creative";
 
@@ -31,7 +31,7 @@ export class AppController {
   }
 
   @Delete('api/creative')
-  async delete(@Param('id') id: string): Promise<Creative[]> {
+  async delete(@Param('id') id: string): Promise<Creative> {
     return this.appService.delete(id);
   }
 }
