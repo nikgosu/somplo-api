@@ -1,8 +1,8 @@
 import {Body, Controller, Delete, Get, Param, Post, Put, Query} from '@nestjs/common';
-import { AppService } from './app.service';
-import {Creative} from "./models/Creative";
+import { AppService } from '../services/app.service';
+import {Creative} from "../models/Creative";
 
-@Controller()
+@Controller('api/creative')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -10,22 +10,22 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-  @Post('api/creative')
+  @Post()
   async create(@Body() creative: Creative): Promise<Creative> {
     return this.appService.create(creative);
   }
 
-  @Get('api/creative')
+  @Get()
   async getAll(): Promise<Creative[]> {
     return this.appService.getAll();
   }
 
-  @Get('api/creative_by_id')
+  @Get()
   async getOne(@Query('id') id: string): Promise<Creative> {
     return this.appService.getOne(id);
   }
 
-  @Put('api/creative')
+  @Put()
   async update(@Body() creative: Creative): Promise<Creative[]> {
     return this.appService.update(creative);
   }

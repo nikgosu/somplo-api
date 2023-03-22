@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
-import {Creative} from "./models/Creative";
+import {Creative} from "../models/Creative";
 
 @Injectable()
 export class AppService {
