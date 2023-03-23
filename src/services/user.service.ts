@@ -18,7 +18,10 @@ export class UserService {
   }
 
   async auth(token): Promise<User> {
-    return this.userModel.findOne({ token });
+    const email = (this.jwtService.verify(token, {}) as any).email
+    const emailDoc = (this.jwtService.verify(token, {}) as any)._doc?.email
+    console.log(email)
+    return this.userModel.findOne({ email: email ? email : emailDoc});
   }
 
   async login(user: any): Promise<User> {
