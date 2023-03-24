@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { Creatives } from "./controllers/creatives";
+import { CreativesController } from "./controllers/creatives.controller";
 import { CreativesService } from "./services/creatives.service";
 import { MongooseModule } from "@nestjs/mongoose";
 import { CreativeSchema } from "./models/Creative";
@@ -18,7 +18,7 @@ import { jwtConstants } from "./consts";
       signOptions: { expiresIn: "60000s" }
     })
   ],
-  controllers: [Creatives, UserController,],
+  controllers: [CreativesController, UserController,],
   providers: [CreativesService, UserService],
 })
 export class AppModule {}

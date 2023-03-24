@@ -3,13 +3,8 @@ import { CreativesService } from '../services/creatives.service';
 import {Creative} from "../models/Creative";
 
 @Controller('api/creative')
-export class Creatives {
+export class CreativesController {
   constructor(private readonly appService: CreativesService) {}
-
-  @Get('api')
-  getHello(): string {
-    return this.appService.getHello();
-  }
   @Post()
   async create(@Body() creative: Creative): Promise<Creative> {
     return this.appService.create(creative);
@@ -30,7 +25,7 @@ export class Creatives {
     return this.appService.update(creative);
   }
 
-  @Delete('api/creative')
+  @Delete()
   async delete(@Param('id') id: string): Promise<Creative> {
     return this.appService.delete(id);
   }
