@@ -19,17 +19,18 @@ export class UserService {
 
   async auth(token): Promise<User> {
     const pureToken = token.split(': ')[1]
-    const email = (this.jwtService.verify(pureToken, {}) as any).email
-    const emailDoc = (this.jwtService.verify(pureToken, {}) as any)._doc?.email
-    return this.userModel.findOne({ email: email ? email : emailDoc});
+    this.jwtService.verify(pureToken)
+    return this.userModel.findOne({ token: pureToken});
   }
-
+  
   async login(user: any): Promise<User> {
     const validatedUser = await this.validateUser(user.email, user.password)
-
+    
     if (validatedUser) {
-      const authToken = await this.getToken(validatedUser)
-      return this.userModel.findOneAndUpdate({email: user.email, password: user.password, token: authToken.token});
+      const authToken = await this.getToken(user)
+      return this.userModel.findOneAndUpdate({email: user.email}, { ...user, token: authToken.token}, {
+        new: true
+      })
     }
   }
 
