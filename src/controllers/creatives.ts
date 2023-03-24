@@ -1,10 +1,10 @@
 import {Body, Controller, Delete, Get, Param, Post, Put, Query} from '@nestjs/common';
-import { AppService } from '../services/app.service';
+import { CreativesService } from '../services/creatives.service';
 import {Creative} from "../models/Creative";
 
 @Controller('api/creative')
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class Creatives {
+  constructor(private readonly appService: CreativesService) {}
 
   @Get('api')
   getHello(): string {

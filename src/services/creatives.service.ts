@@ -4,12 +4,9 @@ import {Model} from "mongoose";
 import {Creative} from "../models/Creative";
 
 @Injectable()
-export class AppService {
+export class CreativesService {
 
   constructor(@InjectModel('Creative') private readonly creativeModel: Model<Creative>) {
-  }
-  getHello(): string {
-    return 'Hello World!';
   }
   async create(creative: Creative): Promise<Creative> {
     const createdCreative = new this.creativeModel(creative);
