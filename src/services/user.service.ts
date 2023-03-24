@@ -18,9 +18,9 @@ export class UserService {
   }
 
   async auth(token): Promise<User> {
-    const email = (this.jwtService.verify(token, {}) as any).email
-    const emailDoc = (this.jwtService.verify(token, {}) as any)._doc?.email
-    console.log(email)
+    const pureToken = token.split(': ')[1]
+    const email = (this.jwtService.verify(pureToken, {}) as any).email
+    const emailDoc = (this.jwtService.verify(pureToken, {}) as any)._doc?.email
     return this.userModel.findOne({ email: email ? email : emailDoc});
   }
 
@@ -29,8 +29,7 @@ export class UserService {
 
     if (validatedUser) {
       const authToken = await this.getToken(validatedUser)
-      const userWithNewToken = await this.userModel.findOneAndUpdate({ ...user, token: authToken.token })
-      return userWithNewToken
+      return this.userModel.findOneAndUpdate({email: user.email, password: user.password, token: authToken.token});
     }
   }
 

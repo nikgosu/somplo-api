@@ -15,7 +15,7 @@ import { jwtConstants } from "./consts";
     MongooseModule.forFeature([{ name: 'Creative', schema: CreativeSchema }, {name: 'User', schema: UserSchema}]),
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: "5m" }
+      signOptions: { expiresIn: "60000s" }
     })
   ],
   controllers: [AppController, UserController,],

@@ -20,7 +20,7 @@ export class AppController {
     return this.appService.getAll();
   }
 
-  @Get()
+  @Get('by_id')
   async getOne(@Query('id') id: string): Promise<Creative> {
     return this.appService.getOne(id);
   }
