@@ -22,7 +22,8 @@ export class CreativesService {
   }
 
   async update(creative): Promise<Creative[]> {
-    return this.creativeModel.findOneAndUpdate(creative._id, creative);
+    const {_id, ...rest} = creative
+    return this.creativeModel.findOneAndUpdate(creative._id, rest);
   }
 
   async delete(id): Promise<Creative> {
