@@ -9,6 +9,9 @@ export interface Creative extends Document {
   readonly verticalPos: number;
   readonly width: number;
   readonly imageSrc: string;
+  readonly userId: string;
+  readonly campaignId: string;
+  readonly placementId: string;
 }
 
 export const CreativeSchema = new Schema({
@@ -20,4 +23,7 @@ export const CreativeSchema = new Schema({
   verticalPos: { type: Number, required: true },
   width: { type: Number, required: true },
   imageSrc: { type: String, required: true },
+  userId: { type: String, required: true },
+  campaignId: { type: String, required: true },
+  placementId: { type: String, required: true },
 }, );
