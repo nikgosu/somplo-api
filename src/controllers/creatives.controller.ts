@@ -11,8 +11,8 @@ export class CreativesController {
   }
 
   @Get()
-  async getAll(): Promise<Creative[]> {
-    return this.appService.getAll();
+  async getAll(@Query() query: any): Promise<Creative[]> {
+    return this.appService.getAll(query);
   }
 
   @Get('by_id')

@@ -24,6 +24,6 @@ export const CreativeSchema = new Schema({
   width: { type: Number, required: true },
   imageSrc: { type: String, required: true },
   userId: { type: String, required: true },
-  campaignId: { type: String, required: true },
+  campaignId: { type: String, required: false },
   placementId: { type: String, required: true },
 }, );
