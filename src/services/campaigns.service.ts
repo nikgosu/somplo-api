@@ -20,4 +20,14 @@ export class CampaignsService {
   async getOne(id): Promise<Campaign> {
     return this.campaignModel.findById(id);
   }
+  
+  async updatePlacementsCount(id): Promise<Campaign> {
+    const campaign: any = await this.getOne(id)
+    return this.campaignModel.findOneAndUpdate({_id: id}, {placements: campaign.placements + 1});
+  }
+  
+  async updateCreativesCount(id): Promise<Campaign> {
+    const campaign: any = await this.getOne(id)
+    return this.campaignModel.findOneAndUpdate({_id: id}, {creatives: campaign.creatives + 1});
+  }
 }

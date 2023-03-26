@@ -5,6 +5,7 @@ export interface Placement extends Document {
   readonly size: string;
   readonly userId: string;
   readonly campaignId: string;
+  readonly creatives: number;
 }
 
 export const PlacementSchema = new Schema({
@@ -12,4 +13,5 @@ export const PlacementSchema = new Schema({
   size: { type: String, required: true },
   userId: { type: String, required: true },
   campaignId: { type: String, required: true },
+  creatives: { type: Number, required: true },
 }, );

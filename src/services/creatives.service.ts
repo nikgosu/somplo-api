@@ -2,11 +2,15 @@ import { Injectable } from '@nestjs/common';
 import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {Creative} from "../models/Creative";
+import {CampaignsService} from "./campaigns.service";
 
 @Injectable()
 export class CreativesService {
 
-  constructor(@InjectModel('Creative') private readonly creativeModel: Model<Creative>) {
+  constructor(
+    @InjectModel('Creative') private readonly creativeModel: Model<Creative>,
+    private campaignsService: CampaignsService
+  ) {
   }
   async create(creative: Creative): Promise<Creative> {
     const createdCreative = new this.creativeModel(creative);
